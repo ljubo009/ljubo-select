@@ -1,1 +1,8 @@
-<ljubo-select [(selected)]="selData" [list]="lista" (select)="selectI($event)" [restData]="restPoziv()"></ljubo-select>
+<ljubo-select
+  [(selected)]="selData"
+  [list]="lista"
+  (select)="selectI($event)"
+  [restData]="restPoziv()"
+  [displayProperty]="'naziv'"
+  [canClear]="false"
+></ljubo-select>

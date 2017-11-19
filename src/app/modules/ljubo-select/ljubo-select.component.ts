@@ -7,6 +7,7 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from 
   encapsulation: ViewEncapsulation.None
 })
 export class LjuboSelectComponent implements OnInit {
+  focusSel = false;
   dirty = false;
   selectedData: any;
   @Input() list;
@@ -18,6 +19,8 @@ export class LjuboSelectComponent implements OnInit {
     this.selectedData = data;
     this.selectedChange.emit(data);
   }
+  @Input()displayProperty
+  @Input() canClear;
   @Input() restData;
   @Output() selectedChange = new EventEmitter();
   @Output() select = new EventEmitter();
@@ -46,6 +49,7 @@ export class LjuboSelectComponent implements OnInit {
   }
   selectData(evt) {
     this.selected = evt;
+    this.focusSel = false;
     console.log('SELEKTIRANI ', this.selected);
   }
   ngOnChanges (evt) {

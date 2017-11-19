@@ -1,2 +1,5 @@
-<l-select-input [selVal]="selected.naziv" (selInputOut)="inputChangeData($event)" ></l-select-input>
-<l-select-list (selectItem)="selectData($event)"  [items]="list"></l-select-list>
+<div class="l-sel-main" (focus)="focusSel = true;" tabindex="1" (blur)="focusSel = false">
+  <l-select-input *ngIf="focusSel" (selInputOut)="inputChangeData($event)" ></l-select-input>
+  <l-selected *ngIf="!focusSel" [canClearData]="canClear" [(item)]="selected" [prop]="displayProperty"></l-selected>
+  <l-select-list *ngIf="focusSel" (selectItem)="selectData($event)"  [items]="list"></l-select-list>
+</div>

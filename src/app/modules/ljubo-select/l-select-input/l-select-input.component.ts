@@ -10,11 +10,11 @@ export class LSelectInputComponent implements OnInit {
   inputVal = "";
   @Output() selInputOut = new EventEmitter();
   @Input()
-  get selVal() {
+  get search() {
     return this.inputVal;
   }
 
-  set selVal(val) {
+  set search(val) {
     this.inputVal = val;
     this.selInputOut.emit(this.inputVal);
   }

@@ -1,1 +1,3 @@
-<div>{{sel}}</div>
+<div *ngIf="item && item.hasOwnProperty(prop)">
+  <span>{{item[prop]}}</span><i *ngIf="canClearData" (click)="clearData()">x</i>
+</div>
