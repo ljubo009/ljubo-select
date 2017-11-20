@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private lista = [{naziv: 'test 1', id: 1}, {naziv: 'test 2', id: 2}, {naziv: 'test 3', id: 3}];
+  private lista = [{naziv: 'test 1', id: 1}, {naziv: 'test 2', id: 2}, {naziv: 'test 3', id: 3},
+    {naziv: 'testest32423423tetes etwetwe 4', id: 4}, {naziv: 'test 5', id: 5}];
   private selData = null;
   private searchP = ['naziv'];
   title = 'app';

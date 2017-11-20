@@ -1,8 +1,10 @@
-<ljubo-select
-  [(selected)]="selData"
-  [list]="lista"
-  (select)="selectI($event)"
-  [displayProperty]="'naziv'"
-  [canClear]="false"
-  [searchProperties]="searchP"
-></ljubo-select>
+<div class="test">
+  <ljubo-select
+                [(selected)]="selData"
+                [list]="lista"
+                (select)="selectI($event)"
+                [displayProperty]="'naziv'"
+                [canClear]="true"
+                [searchProperties]="searchP"
+  ></ljubo-select>
+</div>
