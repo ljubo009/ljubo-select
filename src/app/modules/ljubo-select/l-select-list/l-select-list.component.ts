@@ -8,7 +8,18 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from 
 })
 export class LSelectListComponent implements OnInit {
   itemList;
+  searchData = "";
   @Output() selectItem = new EventEmitter();
+  @Output() searchFilterChange = new EventEmitter();
+  @Input() searchProperties: any;
+  @Input()
+  get searchFilter() {
+    return this.searchData;
+  }
+  set searchFilter(val) {
+    this.searchData = val;
+    this.searchFilterChange.emit(val);
+  }
   @Input()
   get items() {
     return this.itemList;

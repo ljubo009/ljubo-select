@@ -9,6 +9,7 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from 
 export class LSelectInputComponent implements OnInit {
   inputVal = "";
   @Output() selInputOut = new EventEmitter();
+  @Output() searchChange = new EventEmitter();
   @Input()
   get search() {
     return this.inputVal;
@@ -17,6 +18,7 @@ export class LSelectInputComponent implements OnInit {
   set search(val) {
     this.inputVal = val;
     this.selInputOut.emit(this.inputVal);
+    this.searchChange.emit(val);
   }
   constructor() { }
 

@@ -1,5 +1,5 @@
-<div class="l-sel-main" (focus)="focusSel = true;" tabindex="1" (blur)="focusSel = false">
-  <l-select-input *ngIf="focusSel" (selInputOut)="inputChangeData($event)" ></l-select-input>
-  <l-selected *ngIf="!focusSel" [canClearData]="canClear" [(item)]="selected" [prop]="displayProperty"></l-selected>
-  <l-select-list *ngIf="focusSel" (selectItem)="selectData($event)"  [items]="list"></l-select-list>
+<div class="l-sel-main" #lSelMain (click)="focusEl($event)" (blur)="focusSel = false">
+  <l-select-input  [style.display]="focusSel? null: 'none'" [(search)]="searchData" (selInputOut)="inputChangeData($event)" ></l-select-input>
+  <l-selected  [style.display]="focusSel? 'none': null" [canClearData]="canClear" [(item)]="selected" [prop]="displayProperty"></l-selected>
+  <l-select-list [style.display]="focusSel? null: 'none'" [(searchFilter)]="searchData" [searchProperties]="searchProperties" (selectItem)="selectData($event)"  [items]="list"></l-select-list>
 </div>

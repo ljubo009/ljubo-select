@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   private lista = [{naziv: 'test 1', id: 1}, {naziv: 'test 2', id: 2}, {naziv: 'test 3', id: 3}];
   private selData = null;
+  private searchP = ['naziv'];
   title = 'app';
   constructor() {
 

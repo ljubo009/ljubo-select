@@ -1,3 +1,6 @@
 .l-sel-main {
   min-height: 15px;
+  min-width: 50px;
+  float: left;
+  border-bottom: 1px solid #000;
 }

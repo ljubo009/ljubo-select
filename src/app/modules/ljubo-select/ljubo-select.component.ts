@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'ljubo-select',
@@ -10,6 +10,8 @@ export class LjuboSelectComponent implements OnInit {
   focusSel = false;
   dirty = false;
   selectedData: any;
+  searchData = "";
+
   @Input() list;
   @Input()
   get selected () {
@@ -22,15 +24,22 @@ export class LjuboSelectComponent implements OnInit {
   @Input()displayProperty
   @Input() canClear;
   @Input() restData;
+  @Input() searchProperties;
   @Output() selectedChange = new EventEmitter();
   @Output() select = new EventEmitter();
   @Output() search = new EventEmitter();
   @Output() restResolve = new EventEmitter();
   @Output() remove = new EventEmitter();
+  @ViewChild('lSelMain') private lSelectList;
   constructor() { }
 
   ngOnInit() {
     console.log('LISTA', this.list, this.selected);
+    var that = this;
+    document.onclick = (evt) => {
+      console.log("TEST");
+      that.focusSel = false;
+    };
   }
   inputChangeData(evt) {
     const that = this;
@@ -40,6 +49,8 @@ export class LjuboSelectComponent implements OnInit {
         that.restData().then((res) => {
           that.list = res;
         }).catch();
+      } else {
+
       }
       this.search.emit(() => {
         return evt;
@@ -48,9 +59,21 @@ export class LjuboSelectComponent implements OnInit {
     this.dirty = true;
   }
   selectData(evt) {
+    var that = this;
     this.selected = evt;
-    this.focusSel = false;
+    setTimeout(() => {
+
+      that.focusSel = false;
+    }, 0);
+    this.lSelectList.nativeElement.blur();
     console.log('SELEKTIRANI ', this.selected);
+  }
+  focusEl(evt) {
+    if (!this.focusSel) {
+      this.focusSel = true;
+    }
+    this.searchData = "";
+    evt.stopPropagation();
   }
   ngOnChanges (evt) {
     console.log('IZMJENA' , evt, this.list, this.selected);
